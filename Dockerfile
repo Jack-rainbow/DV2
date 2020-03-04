@@ -1,19 +1,31 @@
-FROM docker.io/node
+FROM deepexi/nginx-base:v1.0.0
 
-RUN mkdir -p /usr/src/nodejs/
+COPY ./dist /usr/share/nginx/html
+COPY ./nginx.conf /etc/nginx/nginx.conf
 
-WORKDIR /usr/src/nodejs/
+RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 
-# add npm package
-COPY package.json /usr/src/nodejs/package.json
-
-
-RUN cd /usr/src/nodejs/
+# CMD nginx -g "daemon off"
+Cmd ["nginx"]
 
 
-RUN npm install --registry=https://registry.npm.taobao.org yarn  && yarn
 
-COPY . /usr/src/nodejs/
+# FROM docker.io/node
+
+# RUN mkdir -p /usr/src/nodejs/
+
+# WORKDIR /usr/src/nodejs/
+
+# # add npm package
+# COPY package.json /usr/src/nodejs/package.json
+
+
+# RUN cd /usr/src/nodejs/
+
+
+# RUN npm install --registry=https://registry.npm.taobao.org yarn  && yarn
+
+# COPY . /usr/src/nodejs/
 
 
 
