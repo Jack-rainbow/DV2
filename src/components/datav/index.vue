@@ -1,0 +1,212 @@
+<template>
+  <div id="data-view">
+    <dv-full-screen-container>
+      <div class="main-header">
+        <dv-decoration-7 class="mh-middle">廿三里校级大数据平台显示内容</dv-decoration-7>
+        <div class="time">
+          <span>{{toDay}}</span>
+        </div>
+      </div>
+
+      <dv-border-box-1 class="main-container">
+        <dv-border-box-3 class="left-chart-container">
+
+          <Left-Chart-1 />
+          <Left-Chart-2 />
+          <Left-Chart-3 />
+
+        </dv-border-box-3>
+
+        <div class="right-main-container">
+          <div class="rmc-top-container">
+            <dv-border-box-3 class="rmctc-left-container">
+
+              <Center-Cmp />
+
+            </dv-border-box-3>
+
+            <div class="rmctc-right-container">
+              <dv-border-box-3 class="rmctc-chart-1">
+
+                <Right-Chart-1 />
+
+              </dv-border-box-3>
+
+              <dv-border-box-4 class="rmctc-chart-2" :reverse="true">
+
+                <Right-Chart-2 />
+
+              </dv-border-box-4>
+            </div>
+          </div>
+
+          <dv-border-box-4 class="rmc-bottom-container">
+
+            <Bottom-Charts />
+
+          </dv-border-box-4>
+        </div>
+      </dv-border-box-1>
+
+    </dv-full-screen-container>
+  </div>
+</template>
+
+<script>
+import LeftChart1 from './LeftChart1'
+import LeftChart2 from './LeftChart2'
+import LeftChart3 from './LeftChart3'
+
+import CenterCmp from './CenterCmp'
+
+import RightChart1 from './RightChart1'
+import RightChart2 from './RightChart2'
+
+import BottomCharts from './BottomCharts'
+
+export default {
+  name: 'DataView',
+  components: {
+    LeftChart1,
+    LeftChart2,
+    LeftChart3,
+    CenterCmp,
+    RightChart1,
+    RightChart2,
+    BottomCharts
+  },
+  data () {
+    Date.prototype.format = function (format) {
+        var args = {
+            "M+": this.getMonth() + 1,
+            "d+": this.getDate(),
+            "h+": this.getHours(),
+            "m+": this.getMinutes(),
+            "s+": this.getSeconds(),
+            "q+": Math.floor((this.getMonth() + 3) / 3),  //quarter
+            "S": this.getMilliseconds()
+        };
+        if (/(y+)/.test(format))
+            format = format.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+        for (var i in args) {
+            var n = args[i];
+            if (new RegExp("(" + i + ")").test(format))
+                format = format.replace(RegExp.$1, RegExp.$1.length == 1 ? n : ("00" + n).substr(("" + n).length));
+        }
+        return format;
+    };
+    return {
+      toDay: new Date().format('yyyy-MM-dd hh:mm:ss')
+    }
+  },
+  methods: {
+    getToDay() {
+      setInterval(() => {
+        this.toDay = new Date().format('yyyy-MM-dd hh:mm:ss');
+      }, 1000);
+    }
+  },
+  created() {
+    this.getToDay();
+  },
+}
+</script>
+
+<style lang="less">
+#data-view {
+  width: 100%;
+  height: 100%;
+  background-color: #030409;
+  color: #fff;
+
+  #dv-full-screen-container {
+    background-image: url('./img/bg.png');
+    background-size: 100% 100%;
+    box-shadow: 0 0 3px blue;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .main-header {
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    text-align: center;
+
+    .mh-left {
+      font-size: 20px;
+      color: rgb(1,134,187);
+
+      a:visited {
+        color: rgb(1,134,187);
+      }
+    }
+
+    .mh-middle {
+      width: 100%;
+      font-size: 30px;
+    }
+
+    .mh-left, .mh-right {
+      width: 450px;
+    }
+  }
+
+  .main-container {
+    height: calc(~"100% - 80px");
+
+    .border-box-content {
+      padding: 20px;
+      box-sizing: border-box;
+      display: flex;
+    }
+  }
+
+  .left-chart-container {
+    width: 22%;
+    padding: 10px;
+    box-sizing: border-box;
+
+    .border-box-content {
+      flex-direction: column;
+    }
+  }
+
+  .right-main-container {
+    width: 78%;
+    padding-left: 5px;
+    box-sizing: border-box;
+  }
+
+  .rmc-top-container {
+    height: 65%;
+    display: flex;
+  }
+
+  .rmctc-left-container {
+    width: 65%;
+  }
+
+  .rmctc-right-container {
+    width: 35%;
+  }
+
+  .rmc-bottom-container {
+    height: 35%;
+  }
+
+  .rmctc-chart-1, .rmctc-chart-2 {
+    height: 50%;
+  }
+}
+.time {
+    line-height: 35px;
+    top: 0;
+    position: absolute;
+    right: 30px;
+    color: #fff;
+    font-size: 12px;
+    opacity: 0.7;
+  }
+</style>
