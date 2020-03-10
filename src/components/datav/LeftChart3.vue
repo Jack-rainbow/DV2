@@ -67,7 +67,7 @@ export default {
 <style lang="less">
 .left-chart-3 {
   width: 100%;
-  height: 33%;
+  height: 100%;
   display: flex;
   flex-direction: column;
 

@@ -1,12 +1,12 @@
-FROM deepexi/nginx-base:v1.0.0
+# FROM deepexi/nginx-base:v1.0.0
 
-COPY ./dist /usr/share/nginx/html
-COPY ./nginx.conf /etc/nginx/nginx.conf
+# COPY ./dist /usr/share/nginx/html
+# COPY ./nginx.conf /etc/nginx/nginx.conf
 
-RUN echo "daemon off;" >> /etc/nginx/nginx.conf
+# RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 
-# CMD nginx -g "daemon off"
-Cmd ["nginx"]
+# # CMD nginx -g "daemon off"
+# Cmd ["nginx"]
 
 
 
@@ -29,4 +29,4 @@ Cmd ["nginx"]
 
 
 
-CMD ["yarn", "dev"]
+# CMD ["yarn", "dev"]

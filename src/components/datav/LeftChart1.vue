@@ -75,7 +75,8 @@ export default {
           }
         ],
         digitalFlopStyle: {
-          fontSize: 13
+          fontSize: 13,
+          textAlign: 'right'
         }
       },
       labelConfig: {

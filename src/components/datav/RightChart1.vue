@@ -2,6 +2,7 @@
   <div class="right-chart-1">
     <div class="rc1-header">通知公告</div>
     <dv-scroll-board :config="config" style="width:100%;height:95%" />
+    <dv-decoration-2 style="height:10px" />
   </div>
 </template>
 
@@ -35,7 +36,7 @@ export default {
 <style lang="less">
 .right-chart-1 {
   width: 100%;
-  height: 100%;
+  height: 32%;
   display: flex;
   flex-direction: column;
 

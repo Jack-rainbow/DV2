@@ -2,7 +2,8 @@
   <div class="label-tag">
     <template v-if="mergedConfig">
       <div class="label-item" v-for="(label, i) in mergedConfig.data" :key="label">
-        {{ label }} <div :style="`background-color: ${mergedConfig.colors[i % mergedConfig.colors.length]};`" />
+        {{ label }}
+        <div :style="`background-color: ${mergedConfig.colors[i % mergedConfig.colors.length]};`" />
       </div>
     </template>
   </div>
@@ -73,9 +74,11 @@ export default {
 
   .label-item {
     margin: 5px;
-    font-size: 15px;
+    font-size: 13px;
     display: flex;
     align-items: center;
+    display: flex;
+    width: 100px;
 
     div {
       width: 12px;

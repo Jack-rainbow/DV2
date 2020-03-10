@@ -2,7 +2,8 @@
   <div id="data-view">
     <dv-full-screen-container>
       <div class="main-header">
-        <dv-decoration-7 class="mh-middle">廿三里校级大数据平台显示内容</dv-decoration-7>
+        <!-- <dv-decoration-7 class="mh-middle"></dv-decoration-7> -->
+         <top-header />
         <div class="time">
           <span>{{toDay}}</span>
         </div>
@@ -12,8 +13,9 @@
         <dv-border-box-3 class="left-chart-container">
 
           <Left-Chart-1 />
+          <Right-Chart-1 />
           <Left-Chart-2 />
-          <Left-Chart-3 />
+          
 
         </dv-border-box-3>
 
@@ -28,7 +30,7 @@
             <div class="rmctc-right-container">
               <dv-border-box-3 class="rmctc-chart-1">
 
-                <Right-Chart-1 />
+              <Left-Chart-3 />
 
               </dv-border-box-3>
 
@@ -53,6 +55,7 @@
 </template>
 
 <script>
+import TopHeader from './topHeader'
 import LeftChart1 from './LeftChart1'
 import LeftChart2 from './LeftChart2'
 import LeftChart3 from './LeftChart3'
@@ -73,6 +76,7 @@ export default {
     CenterCmp,
     RightChart1,
     RightChart2,
+    TopHeader,
     BottomCharts
   },
   data () {
@@ -128,11 +132,11 @@ export default {
   }
 
   .main-header {
-    height: 50px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    text-align: center;
+    // height: 50px;
+    // display: flex;
+    // justify-content: space-between;
+    // align-items: flex-end;
+    // text-align: center;
 
     .mh-left {
       font-size: 20px;
@@ -201,12 +205,12 @@ export default {
   }
 }
 .time {
-    line-height: 35px;
-    top: 0;
-    position: absolute;
-    right: 30px;
-    color: #fff;
-    font-size: 12px;
-    opacity: 0.7;
-  }
+  line-height: 35px;
+  top: -2px;
+  position: absolute;
+  right: 60px;
+  color: #fff;
+  font-size: 12px;
+  opacity: 0.7;
+}
 </style>
