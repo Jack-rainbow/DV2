@@ -124,7 +124,7 @@ export default {
   color: #fff;
 
   #dv-full-screen-container {
-    background-image: url('./img/bg.png');
+    background-image: url('./img/true4.png');
     background-size: 100% 100%;
     box-shadow: 0 0 3px blue;
     display: flex;

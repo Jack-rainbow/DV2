@@ -74,7 +74,7 @@
     </div> -->
     <!-- <dv-decoration-10 style="width:100%;height:5px;margin-top: 20px;" /> -->
     <div class="table">
-      <div class="temp">学生健康状况</div>
+      <div class="temp">日常巡查任务</div>
       <!-- <dv-scroll-board :config="config2" style="width:700px;height:150px" /> -->
       <dv-charts :option="option"  style="width:700px;height:280px;margin-top: -50px;" />
     </div>
