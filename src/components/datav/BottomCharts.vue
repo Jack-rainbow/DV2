@@ -1,6 +1,6 @@
 <template>
   <div class="bottom-charts">
-    <div class="bc-chart-item">
+    <!-- <div class="bc-chart-item">
       <div class="bcci-header">
         <img
           src="./img/icon1.png"
@@ -10,10 +10,11 @@
       </div>
       <dv-active-ring-chart :config="config1" />
       <Label-Tag :config="labelConfig" />
-    </div>
-    <dv-decoration-2 class="decoration-1" :reverse="true" style="width:5px;" />
+    </div> -->
+    <!-- <dv-decoration-2 class="decoration-1" :reverse="true" style="width:5px;" /> -->
 
-    <div class="bc-chart-item">
+
+     <div class="bc-chart-item">
       <div class="bcci-header">
         <img
           src="./img/icon2.png"
@@ -21,37 +22,46 @@
     vertical-align: sub;"
         />安全教育
       </div>
-      <dv-scroll-board :config="config2" style="width:100%;height:120px" />
+     <dv-active-ring-chart :config="config2" style="width:150px;height:150px;display:inline-block;margin-left: 20px;margin-top: 24px;" />
+     <dv-active-ring-chart :config="config2" style="width:150px;height:150px;display:inline-block;margin-top: 24px;" />
+    <!-- <p class="count">标题标题标题标题标题标题标题标题标题标题标题标题标题标题</p> -->
     </div>
 
     <dv-decoration-2 class="decoration-2" :reverse="true" style="width:5px;" />
 
-    <div class="bc-chart-item">
-      <div class="bcci-header">
-        <img
-          src="./img/icon3.png"
-          style="width:30px;height:30px;    margin-right: 10px;
-    vertical-align: sub;"
-        />警告分析
-      </div>
-      <dv-capsule-chart :config="option" style="width:100%;height:120px" />
-    </div>
 
-    <dv-decoration-2 class="decoration-3" :reverse="true" style="width:5px;" />
-
-    <div class="bc-chart-item">
+ <div class="bc-chart-item">
       <div class="bcci-header">
         <img
           src="./img/icon4.png"
-          style="width:30px;height:30px;    margin-right: 10px;
+          style="width:30px;height:30px;margin-right: 10px;
     vertical-align: sub;"
         />安全应急
       </div>
-      <dv-scroll-ranking-board
+      <!-- <dv-scroll-ranking-board
         :config="config4"
         style="width:220px;height:120px;margin-left:20px;"
-      />
+      /> -->
+      <dv-capsule-chart :config="config4" style="width:300px;height:145px;margin-left:20px;margin-top: 38px;" />
     </div>
+    <dv-decoration-2 class="decoration-3" :reverse="true" style="width:5px;" />
+
+   
+
+    <div class="bc-chart-item">
+      <div class="bcci-header">
+        <img
+          src="./img/icon1.png"
+          style="width:30px;height:30px;    margin-right: 10px;
+    vertical-align: sub;"
+        />报警分析
+      </div>
+       <dv-charts :option="option" style="width:300px;height:183px;margin-left:20px;" />
+    </div>
+
+    
+
+   
   </div>
 </template>
 
@@ -91,81 +101,130 @@ export default {
         },
         activeRadius: '70%'
       },
-
-      option: {
-        data: [
-          {
-            name: '1',
-            value: 167
-          },
-          {
-            name: '2',
-            value: 123
-          },
-          {
-            name: '3',
-            value: 98
-          },
-          {
-            name: '4',
-            value: 75
-          },
-          {
-            name: '5',
-            value: 66
+       option: {
+        legend: {
+          data: [
+            {
+              name: '报警系统',
+              color: '#00baff'
+            },
+            {
+              name: '监控系统',
+              color: '#ff5ca9'
+            },
+            {
+              name: '通信系统',
+              color: '#3de7c9'
+            },
+            {
+              name: '供配电系统',
+              color: '#f5d94e'
+            }
+          ],
+          textStyle: {
+            fill: '#fff'
           }
-        ],
-        colors: ['#e062ae', '#fb7293', '#e690d1', '#32c5e9', '#96bfff']
+        },
+        xAxis: {
+          data: [
+            '10/01', '10/02', '10/03', '10/04', '10/05', '10/06', '10/07'
+          ],
+
+          axisLine: {
+            style: {
+              stroke: '#999',
+              fill: '#fff',
+              fontSize: 10
+            }
+          },
+          axisLabel: {
+            style: {
+              fill: '#fff'
+            }
+          },
+          axisTick: {
+            show: false
+          }
+        },
+        yAxis: {
+          data: 'value',
+          splitLine: {
+            show: false,
+            fill: '#fff',
+            fontSize: 10,
+            rotate: 0
+          },
+          axisLine: {
+            style: {
+              stroke: '#fff'
+            }
+          },
+          axisLabel: {
+            style: {
+              fill: '#fff'
+            }
+          },
+          axisTick: {
+            show: false
+          },
+          min: 0,
+          max: 8
+        },
+        series: [
+          {
+            name: '报警系统',
+            data: [
+              2.5, 3.5, 6.5, 6.5, 7.5, 6.5, 2.5
+            ],
+            type: 'bar',
+            barStyle: {
+              fill: 'rgba(0, 186, 255, 0.4)'
+            }
+          },
+        ]
       },
+    
 
       config2: {
-        oddRowBGC: 'rgba(14, 14, 14,0.1)',
-        evenRowBGC: 'rgba(14, 14, 14,0.1)',
         data: [
-          ['学校操场', '250'],
-          ['学校公厕', '360'],
-          ['学校公厕', '4'],
-          ['学校公厕', '10'],
-          ['学校公厕', '10'],
-          ['学校公厕', '01'],
-          ['学校公厕', '01']
+          {
+            name: '学校',
+            value: 20
+          },
+          {
+            name: '餐厅',
+            value: 80
+          },
         ],
-        index: true,
-        columnWidth: [50],
-        align: ['center']
+        digitalFlopStyle: {
+          fontSize: 20
+        }
       },
 
       config4: {
-        data: [
-          {
-            name: '1',
-            value: 55
-          },
-          {
-            name: '2',
-            value: 120
-          },
-          {
-            name: '3',
-            value: 78
-          },
-          {
-            name: '4',
-            value: 66
-          },
-          {
-            name: '5',
-            value: 80
-          },
-          {
-            name: '6',
-            value: 45
-          },
-          {
-            name: '7',
-            value: 29
-          }
-        ]
+          data: [
+    {
+      name: '南阳',
+      value: 167
+    },
+    {
+      name: '周口',
+      value: 67
+    },
+    {
+      name: '漯河',
+      value: 123
+    },
+    {
+      name: '郑州',
+      value: 55
+    },
+    {
+      name: '西峡',
+      value: 98
+    },
+  ],
+  unit: '单位'
       },
 
       labelConfig: {
@@ -191,11 +250,24 @@ export default {
     left: 10px;
     top: 5px;
   }
+  .count{
+    color: #fff;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    padding: 5px 10px;
+    width: 80%;
+    margin: auto;
+    left: 0;
+    right: 0;
+    position: absolute;
+    bottom: -12px;
+  }
   .bc-chart-item {
-    width: 25%;
+    width: 33%;
     height: 100%;
     padding-top: 20px;
     box-sizing: border-box;
+    position: relative;
   }
 
   .bcci-header {
@@ -203,6 +275,12 @@ export default {
     text-align: center;
     line-height: 50px;
     font-size: 20px;
+    position: absolute;
+    width: 135px;
+    left: 0;
+    right: 0;
+    top:10px;
+    margin: auto;
   }
 
   .dv-active-ring-chart {
